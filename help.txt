@@ -1,0 +1,7 @@
+Welcome to the randomness API.
+
+alexselzer.com/random yields a Hardware RNG value in hexadecimal encoding.
+
+Use /?encoding=number to generate a random number.
+
+Use /?size=64 to e.g. to get 64 random bytes.

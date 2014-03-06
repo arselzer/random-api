@@ -1,9 +1,21 @@
 var express = require("express");
 var crypto = require("crypto");
+var fs = require("fs");
 
 var default_size = 2048;
+var log_file = fs.createWriteStream("./random.log", {flags: "a"});
 
 var app = express();
+
+app.use(express.logger({stream: log_file}));
+
+app.get("/random/help", function(req, res) {
+  fs.readFile("./help.txt", function(err, buffer) {
+    res.setHeader("Content-Type", "text/plain");
+    res.send(buffer.toString());
+    res.end();
+  });
+});
 
 app.get("/random", function(req, res) {
   var querySize;
